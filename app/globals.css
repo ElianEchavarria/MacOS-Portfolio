@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+    --font-inter: "Inter", sans-serif;
+}
+
+html, body {
+    width: 100dvw;
+    overflow: hidden;
+    background-image: url("/MacOSBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

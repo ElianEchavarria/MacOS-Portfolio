@@ -1,9 +1,10 @@
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="text-3xl font-bold underline">
-      Welcome to my, MacFolio
-    </div>
+    <main className="w-dvw h-dvh overflow-hidden">
+      <Navbar />
+    </main>
   );
 }
