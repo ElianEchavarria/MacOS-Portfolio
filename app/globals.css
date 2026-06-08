@@ -30,3 +30,36 @@ html, body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
+
+/* macOS 26 "Liquid Glass" dock container */
+.dock-glass {
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Per-icon magnification + lift on hover */
+.dock-item {
+    transform-origin: bottom center;
+    transition: transform 0.18s cubic-bezier(0.25, 0.8, 0.4, 1);
+    will-change: transform;
+}
+
+.dock-item:hover {
+    transform: scale(1.32) translateY(-6px);
+}
+
+/* Glass tooltip shown above the hovered icon */
+.dock-tooltip {
+    background: rgba(40, 40, 45, 0.55);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
