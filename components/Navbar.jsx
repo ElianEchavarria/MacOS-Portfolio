@@ -25,16 +25,22 @@ const Navbar = () => {
                         { id: 3, name: "Contact" },
                     ].map(({ id, name }) => (
                         <li key={id}>
-                            <p className='font-inter text-sm cursor-pointer hover:underline transition-all text-amber-50'>{name}</p>
+                            <p className='glass-hover font-inter text-sm cursor-pointer px-3 py-1 rounded-lg text-amber-50'>{name}</p>
                         </li>
                     ))}
                 </ul>
             </div>
-            <div className='flex items-center gap-3 text-amber-50'>
-                <img src="/wifi.svg" alt="Wifi icon" className='h-3.5 w-auto' />
-                <img src="/search.svg" alt="Search icon" className='h-3.5 w-auto' />
-                <img src="/menu.svg" alt="Menu icon" className='h-3.5 w-auto' />
-                <time className='font-inter text-sm'>{now?.format("ddd MMM D h:mm A")}</time>
+            <div className='flex items-center gap-1 text-amber-50'>
+                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
+                    <img src="/wifi.svg" alt="Wifi icon" className='h-3.5 w-auto' />
+                </span>
+                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
+                    <img src="/search.svg" alt="Search icon" className='h-3.5 w-auto' />
+                </span>
+                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
+                    <img src="/menu.svg" alt="Menu icon" className='h-3.5 w-auto' />
+                </span>
+                <time className='glass-hover font-inter text-sm cursor-default rounded-lg px-2 py-1'>{now?.format("ddd MMM D h:mm A")}</time>
             </div>
         </nav>
     )
