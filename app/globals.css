@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --font-georama: "Georama", sans-serif;
+    --font-georama: var(--font-georama-loaded), sans-serif;
     --font-roboto: "Roboto Mono", monospace;
     --font-Inter: "Inter", Inter;
 }
