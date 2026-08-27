@@ -2,6 +2,19 @@
 
 import React, { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
+import GlassHover from '@/components/GlassHover'
+
+const navLinks = [
+    { id: 1, name: "Projects" },
+    { id: 2, name: "Resume" },
+    { id: 3, name: "Contact" },
+]
+
+const statusIcons = [
+    { id: 'wifi', src: '/wifi.svg', alt: 'Wifi icon' },
+    { id: 'search', src: '/search.svg', alt: 'Search icon' },
+    { id: 'menu', src: '/menu.svg', alt: 'Menu icon' },
+]
 
 const Navbar = () => {
     const [now, setNow] = useState(null)
@@ -19,28 +32,28 @@ const Navbar = () => {
                 <p className='font-inter font-bold text-sm cursor-pointer hover:underline transition-all text-amber-50'>Elian's Portfolio</p>
 
                 <ul className='flex items-center gap-5 max-sm:hidden'>
-                    {[
-                        { id: 1, name: "Projects" },
-                        { id: 2, name: "Resume" },
-                        { id: 3, name: "Contact" },
-                    ].map(({ id, name }) => (
-                        <li key={id}>
-                            <p className='glass-hover font-inter text-sm cursor-pointer px-3 py-1 rounded-lg text-amber-50'>{name}</p>
-                        </li>
+                    {navLinks.map(({ id, name }) => (
+                        <GlassHover
+                            key={id}
+                            as='li'
+                            className='font-inter text-sm cursor-pointer px-3 py-1 text-amber-50'
+                        >
+                            {name}
+                        </GlassHover>
                     ))}
                 </ul>
             </div>
+
             <div className='flex items-center gap-1 text-amber-50'>
-                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
-                    <img src="/wifi.svg" alt="Wifi icon" className='h-3.5 w-auto' />
-                </span>
-                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
-                    <img src="/search.svg" alt="Search icon" className='h-3.5 w-auto' />
-                </span>
-                <span className='glass-hover cursor-pointer rounded-lg p-1.5'>
-                    <img src="/menu.svg" alt="Menu icon" className='h-3.5 w-auto' />
-                </span>
-                <time className='glass-hover font-inter text-sm cursor-default rounded-lg px-2 py-1'>{now?.format("ddd MMM D h:mm A")}</time>
+                {statusIcons.map(({ id, src, alt }) => (
+                    <GlassHover key={id} cornerRadius={9} className='cursor-pointer p-1.5'>
+                        <img src={src} alt={alt} className='h-3.5 w-auto' />
+                    </GlassHover>
+                ))}
+
+                <GlassHover as='time' className='font-inter text-sm cursor-default px-2 py-1'>
+                    {now?.format("ddd MMM D h:mm A")}
+                </GlassHover>
             </div>
         </nav>
     )
