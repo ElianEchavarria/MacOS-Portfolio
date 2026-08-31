@@ -6,18 +6,18 @@ import { useShallow } from 'zustand/shallow'
 import Window from '@/components/Window'
 import useWindowStore from '@/store/window'
 import projects from '@/projects'
-import { Contact, Resume, Terminal } from '@/windows'
+import { Contact, Finder, Resume, Terminal } from '@/windows'
 
 // Real window bodies. Add to this as you build each one.
 const WINDOW_COMPONENTS = {
     terminal: Terminal,
     resume: Resume,
     contact: Contact,
+    finder: Finder,
 }
 
 // Placeholder copy for the windows that don't have a body yet.
 const WINDOW_CONTENT = {
-    finder: 'Projects, case studies and the work itself.',
     safari: 'Writing and articles.',
     photos: 'A gallery of shots.',
     trash: 'Nothing in here yet.',

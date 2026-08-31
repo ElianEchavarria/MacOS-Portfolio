@@ -12,7 +12,7 @@ const georama = Georama({
 });
 
 export const metadata = {
-  title: "MacOS Portfolio",
+  title: "Elian Portfolio",
   description: "MacOS style Portfolio",
 };
 
