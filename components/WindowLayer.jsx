@@ -6,26 +6,31 @@ import { useShallow } from 'zustand/shallow'
 import Window from '@/components/Window'
 import useWindowStore from '@/store/window'
 import projects from '@/projects'
-import { Contact, Finder, Resume, Terminal } from '@/windows'
+import {
+    About,
+    Articles,
+    Contact,
+    Finder,
+    Gallery,
+    Resume,
+    Terminal,
+    Trash,
+} from '@/windows'
 
-// Real window bodies. Add to this as you build each one.
 const WINDOW_COMPONENTS = {
     terminal: Terminal,
     resume: Resume,
     contact: Contact,
     finder: Finder,
+    safari: Articles,
+    photos: Gallery,
+    trash: Trash,
+    about: About,
 }
 
-// Placeholder copy for the windows that don't have a body yet.
-const WINDOW_CONTENT = {
-    safari: 'Writing and articles.',
-    photos: 'A gallery of shots.',
-    trash: 'Nothing in here yet.',
-}
-
-const Placeholder = ({ id }) => (
+const Placeholder = () => (
     <div className="flex h-full items-center justify-center p-8 text-center font-inter text-sm text-white/50">
-        {WINDOW_CONTENT[id] ?? 'Coming soon.'}
+        Coming soon.
     </div>
 )
 
@@ -85,7 +90,7 @@ const bodyFor = (id) => {
     const project = projects.find((p) => p.id === id)
     if (project) return <ProjectBody project={project} />
 
-    return <Placeholder id={id} />
+    return <Placeholder />
 }
 
 const WindowLayer = () => {

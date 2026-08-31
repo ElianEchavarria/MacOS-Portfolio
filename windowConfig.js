@@ -23,6 +23,11 @@ const EXTRA_WINDOWS = {
         size: { width: 760, height: 680 },
         minSize: { width: 520, height: 420 },
     },
+    about: {
+        title: 'about-me.txt',
+        size: { width: 620, height: 480 },
+        minSize: { width: 400, height: 300 },
+    },
 }
 
 // Every project gets a window, keyed by its id, so `open algoarena` works.

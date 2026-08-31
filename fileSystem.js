@@ -13,7 +13,12 @@ export const FOLDERS = {
     about: {
         label: 'About me',
         items: [
-            { id: 'about-me-txt', name: 'about-me.txt', icon: '/txt.png' },
+            {
+                id: 'about-me-txt',
+                name: 'about-me.txt',
+                icon: '/txt.png',
+                opens: 'about',
+            },
         ],
     },
     resume: {
