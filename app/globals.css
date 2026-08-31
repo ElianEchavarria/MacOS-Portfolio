@@ -71,15 +71,12 @@ html, body {
     border-radius: inherit;
 }
 
-/* Per-icon magnification + lift on hover */
+/* Magnification is driven by GSAP in Dock.jsx, not CSS. Deliberately no
+   transition (it would lag behind the per-frame tween) and no will-change:
+   promoting the icon to its own layer locks its raster scale, so the GPU
+   upscales a stale bitmap instead of redrawing the icon sharp at its new size. */
 .dock-item {
     transform-origin: bottom center;
-    transition: transform 0.18s cubic-bezier(0.25, 0.8, 0.4, 1);
-    will-change: transform;
-}
-
-.dock-item:hover {
-    transform: scale(1.32) translateY(-6px);
 }
 
 /* Glass tooltip shown above the hovered icon */

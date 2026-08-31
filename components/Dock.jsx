@@ -5,58 +5,104 @@ import LiquidGlass from "@/components/LiquidGlass"
 import dockApps from "@/dockApp"
 // import { Tooltip } from 'react-tooltip'
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
+import { useEffect, useState } from 'react'
 import gsap from "gsap"
 
 const Dock = () => {
-    const dockRef = useRef(null);
+    // An odd dock width makes the library's translate(-50%) land on a half
+    // pixel, which puts every icon on a fractional coordinate and softens them
+    // on any display that isn't exactly 2x. The spare pixel goes on the right
+    // only — splitting it would make the width even but shift the icons onto
+    // half pixels instead, just moving the blur. Parity is read from the icon
+    // row, so the padding it sets can't feed back into the measurement.
+    const [iconRow, setIconRow] = useState(null);
+    const [padRight, setPadRight] = useState(14);
+
+    useEffect(() => {
+        if (!iconRow) return;
+
+        const keepWidthEven = () => {
+            const { width } = iconRow.getBoundingClientRect();
+            setPadRight(Math.round(width) % 2 === 0 ? 14 : 15);
+        };
+
+        keepWidthEven();
+        const observer = new ResizeObserver(keepWidthEven);
+        observer.observe(iconRow);
+        return () => observer.disconnect();
+    }, [iconRow]);
 
     useGSAP(() => {
-        const dock = dockRef.current;
-        if (!dock) return;
+        const row = iconRow;
+        if (!row) return;
 
-        const icons = dock.querySelectorAll(".dock-icon");
+        // Measure the wrappers, not the buttons: a transform on the button
+        // doesn't move its parent's layout box, so these centers stay at their
+        // resting values even while the icons are mid-magnification. Reading
+        // the buttons instead would feed each icon's own scale back into the
+        // distance calculation and make the row jitter.
+        const apps = [...row.querySelectorAll('.dock-app')].map((el) => ({
+            el,
+            icon: el.querySelector('.dock-item'),
+        }));
+        if (!apps.length) return;
+
+        let centers = [];
+        const measure = () => {
+            const rowLeft = row.getBoundingClientRect().left;
+            centers = apps.map(({ el }) => {
+                const { left, width } = el.getBoundingClientRect();
+                return left - rowLeft + width / 2;
+            });
+        };
+        measure();
 
         const animateIcons = (mouseX) => {
-            const { left } = dock.getBoundClientRect();
-
-            icons.forEach((icon) => {
-                const { left: iconsLeft, width } = icons.getBoundClientRect();
-                const center = iconsLeft - left + width / 2;
-                const distance = Math.abs(mouseX - center);
-
-                const intensity = Math.exp(-(distance ** 2.5) / 20000);
+            apps.forEach(({ icon }, i) => {
+                const distance = Math.abs(mouseX - centers[i]);
+                const intensity = Math.exp(-(distance ** 2) / 4200);
 
                 gsap.to(icon, {
-                    scale: 1 + 0.25 * intensity,
-                    y: -15 * intensity,
-                    duration: 0.2,
-                    ease: "power1.out",
-                })
+                    scale: 1 + 0.35 * intensity,
+                    y: -16 * intensity,
+                    duration: 0.22,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                    // Keeps GSAP from adding translateZ(0), which would promote
+                    // the icon to a GPU layer and freeze its raster scale —
+                    // the magnified icon would then be an upscaled bitmap.
+                    force3D: false,
+                });
             });
         };
 
         const handleMouseMove = (e) => {
-            const { left } = dock.getBoundClientRect();
-
-            animateIcons(e.clientX - left);
-
+            animateIcons(e.clientX - row.getBoundingClientRect().left);
         };
 
-        const resetIcons = () => icons.forEach((icon) => {
-            gsap.to(icon, {
-                scale: 1, y: 0, duration: 0.3, ease: "power1.out",
-            })
-        });
+        const resetIcons = () => {
+            apps.forEach(({ icon }) => {
+                gsap.to(icon, {
+                    scale: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                    force3D: false,
+                });
+            });
+        };
 
-        dock.addEventListener('mouseover', handleMouseMove);
-        dock.addEventListener('mouseleave', resetIcons);
+        row.addEventListener("mousemove", handleMouseMove);
+        row.addEventListener("mouseleave", resetIcons);
+        window.addEventListener("resize", measure);
 
         return () => {
-            dock.removeEventListener("mousemove", handleMouseMove);
-            dock.removeEventListener("mouseleave", resetIcons)
+            row.removeEventListener("mousemove", handleMouseMove);
+            row.removeEventListener("mouseleave", resetIcons);
+            window.removeEventListener("resize", measure);
         };
-    }, []);
+    }, [iconRow]);
 
 
     const toggleApp = (app) => {
@@ -80,7 +126,7 @@ const Dock = () => {
                 aberrationIntensity={2}
                 elasticity={0.22}
                 cornerRadius={32}
-                padding="10px 14px"
+                padding={`10px ${padRight}px 10px 14px`}
                 // LiquidGlass always centers itself on its top/left via a
                 // translate(-50%,-50%), so it needs explicit coordinates.
                 // display:flex stops the library's block-level outer div from
@@ -95,13 +141,13 @@ const Dock = () => {
                     pointerEvents: 'auto',
                 }}
             >
-                <div className="flex items-end gap-2">
+                <div ref={setIconRow} className="flex items-end gap-2">
                     {dockApps.map(({ id, name, icon, canOpen, section, fullBleed }) => (
                         <React.Fragment key={id}>
                             {section === 'trash' && (
                                 <span className="mx-1 h-12 w-px self-center bg-white/30" />
                             )}
-                            <div className="group relative flex flex-col items-center">
+                            <div className="dock-app group relative flex flex-col items-center">
                                 {/* Glass tooltip */}
                                 <span
                                     className="dock-tooltip pointer-events-none absolute -top-16 whitespace-nowrap rounded-lg px-3 py-1 text-xs font-medium text-white opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0"
@@ -122,9 +168,13 @@ const Dock = () => {
                                     <img
                                         src={`/${icon}`}
                                         alt={name}
-                                        loading="lazy"
                                         draggable={false}
-                                        className={`size-full object-contain drop-shadow-md ${fullBleed ? 'scale-[0.84]' : ''} ${canOpen ? '' : 'opacity-60'}`}
+                                        // size-12 rather than scale-[0.84]: the
+                                        // transform rendered these at 47.04px and
+                                        // resampled an already-rasterized layer,
+                                        // where a plain 48px box lets the browser
+                                        // sample the source directly.
+                                        className={`object-contain drop-shadow-md ${fullBleed ? 'size-12' : 'size-full'} ${canOpen ? '' : 'opacity-60'}`}
                                     />
                                 </button>
 
