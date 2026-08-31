@@ -79,11 +79,37 @@ html, body {
     transform-origin: bottom center;
 }
 
+/* App window: frosted panel with a hairline edge, sitting above the desktop
+   but below the dock (which owns z-50). */
+.window-panel {
+    background: rgba(30, 30, 34, 0.76);
+    /* Unprefixed only: the build adds the -webkit- form itself, and writing
+       both by hand makes it collapse them to whichever came last. */
+    backdrop-filter: blur(18px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Opacity only. Animating transform on a backdrop-filtered element makes
+       the browser re-blur everything behind it on every frame of the open. */
+    animation: windowOpen 0.14s ease-out;
+}
+
+@keyframes windowOpen {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* While a window is being dragged or resized, drop the blur and go opaque.
+   Re-sampling the backdrop every frame is the single most expensive thing on
+   screen, and the panel still reads as a solid window while it moves. */
+html[data-window-dragging] .window-panel {
+    background: rgb(30, 30, 34);
+    backdrop-filter: none;
+}
+
 /* Glass tooltip shown above the hovered icon */
 .dock-tooltip {
     background: rgba(40, 40, 45, 0.55);
     backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     transition: opacity 0.15s ease, transform 0.15s ease;
