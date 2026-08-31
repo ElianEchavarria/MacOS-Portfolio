@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import GlassHover from '@/components/GlassHover'
+import useWindowStore from '@/store/window'
 
+// `window` is the id opened on click — see windowConfig.js.
 const navLinks = [
-    { id: 1, name: "Projects" },
-    { id: 2, name: "Resume" },
-    { id: 3, name: "Contact" },
+    { id: 1, name: "Projects", window: 'finder' },
+    { id: 2, name: "Resume", window: 'resume' },
+    { id: 3, name: "Contact", window: 'contact' },
 ]
 
 const statusIcons = [
@@ -18,6 +20,7 @@ const statusIcons = [
 
 const Navbar = () => {
     const [now, setNow] = useState(null)
+    const openApp = useWindowStore((s) => s.openApp)
 
     useEffect(() => {
         setNow(dayjs())
@@ -32,10 +35,11 @@ const Navbar = () => {
                 <p className='font-inter font-bold text-sm cursor-pointer hover:underline transition-all text-amber-50'>Elian's Portfolio</p>
 
                 <ul className='flex items-center gap-5 max-sm:hidden'>
-                    {navLinks.map(({ id, name }) => (
+                    {navLinks.map(({ id, name, window }) => (
                         <GlassHover
                             key={id}
                             as='li'
+                            onClick={() => openApp(window)}
                             className='font-inter text-sm cursor-pointer px-3 py-1 text-amber-50'
                         >
                             {name}

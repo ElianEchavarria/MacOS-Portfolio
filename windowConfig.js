@@ -1,3 +1,4 @@
+import projects from '@/projects'
 
 export const DESKTOP_INSETS = {
     top: 48,
@@ -14,7 +15,29 @@ export const WINDOW_DEFAULTS = {
 // Each new window steps down-right from the last so a stack stays grabbable.
 export const WINDOW_CASCADE_STEP = 28
 
-export const WINDOW_CONFIG = {
+// Windows that aren't dock apps but can still be opened — from the terminal,
+// the menu bar, or a link.
+const EXTRA_WINDOWS = {
+    resume: {
+        title: 'Resume',
+        size: { width: 760, height: 680 },
+        minSize: { width: 520, height: 420 },
+    },
+}
+
+// Every project gets a window, keyed by its id, so `open algoarena` works.
+const PROJECT_WINDOWS = Object.fromEntries(
+    projects.map((project) => [
+        project.id,
+        {
+            title: project.name,
+            size: { width: 820, height: 560 },
+            minSize: { width: 480, height: 360 },
+        },
+    ])
+)
+
+const APP_WINDOWS = {
     finder: {
         title: 'Portfolio',
         size: { width: 960, height: 620 },
@@ -38,8 +61,8 @@ export const WINDOW_CONFIG = {
     contact: {
         // A fixed-size panel, like Contacts' own compact window.
         title: 'Contact',
-        size: { width: 560, height: 520 },
-        minSize: { width: 560, height: 520 },
+        size: { width: 560, height: 660 },
+        minSize: { width: 560, height: 660 },
         resizable: false,
     },
     trash: {
@@ -47,6 +70,12 @@ export const WINDOW_CONFIG = {
         size: { width: 780, height: 500 },
         minSize: { width: 480, height: 340 },
     },
+}
+
+export const WINDOW_CONFIG = {
+    ...APP_WINDOWS,
+    ...EXTRA_WINDOWS,
+    ...PROJECT_WINDOWS,
 }
 
 /**
