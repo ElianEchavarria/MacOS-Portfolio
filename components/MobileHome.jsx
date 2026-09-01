@@ -10,6 +10,7 @@ import dockApps from '@/dockApp'
 import useWindowStore from '@/store/window'
 
 const DOCK_IDS = ['finder', 'safari', 'photos', 'contact']
+const HIDDEN_ON_MOBILE = ['trash']
 
 const AppIcon = ({ app, onOpen, size }) => (
     <button
@@ -44,7 +45,9 @@ const MobileHome = () => {
         return () => clearInterval(id)
     }, [])
 
-    const homeApps = dockApps.filter((app) => !DOCK_IDS.includes(app.id))
+    const homeApps = dockApps.filter(
+        (app) => !DOCK_IDS.includes(app.id) && !HIDDEN_ON_MOBILE.includes(app.id)
+    )
     const dockedApps = DOCK_IDS.map((id) => dockApps.find((app) => app.id === id)).filter(
         Boolean
     )
