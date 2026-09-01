@@ -64,7 +64,13 @@ const Contact = () => {
 
             <ul className="mt-5">
                 {email && <Row label="Email" value={email} href={`mailto:${email}`} />}
-                {phone && <Row label="Phone" value={phone} href={`tel:${phone}`} />}
+                {phone && (
+                    <Row
+                        label="Phone"
+                        value={phone}
+                        href={`tel:${phone.replace(/[^\d+]/g, '')}`}
+                    />
+                )}
                 {links
                     ?.filter((link) => link.href)
                     .map((link) => (

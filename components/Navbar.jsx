@@ -29,7 +29,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <nav className='flex justify-between items-center pt-3 p-2 px-5 select-none'>
+        <nav className='flex justify-between items-center pt-3 p-2 px-5 select-none max-sm:hidden'>
             <div className='flex items-center gap-5'>
                 <img src="/AppleLogo.svg" alt="Apple Logo" width={40} height={40} />
                 <p className='font-inter font-bold text-sm cursor-pointer hover:underline transition-all text-amber-50'>Elian's Portfolio</p>

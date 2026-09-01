@@ -1,7 +1,11 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { ChevronLeft } from 'lucide-react'
+
 import useWindowStore from '@/store/window'
+import useIsMobile from '@/hooks/useIsMobile'
+import { WindowNavContext } from '@/components/WindowNav'
 import { fitToDesktop } from '@/windowConfig'
 
 // Each handle names the edges it drags, so one handler covers all eight. They
@@ -83,6 +87,8 @@ const TrafficLight = ({ color, symbol, label, onClick, disabled }) => (
 
 const Window = ({ id, children }) => {
     const nodeRef = useRef(null)
+    const isMobile = useIsMobile()
+    const [nav, setNav] = useState(null)
 
     const win = useWindowStore((s) => s.windows.find((w) => w.id === id))
 
@@ -114,7 +120,7 @@ const Window = ({ id, children }) => {
 
     const handleTitleBarDown = (event) => {
         focusWindow(id)
-        if (isMaximized) return
+        if (isMaximized || isMobile) return
 
         const origin = { ...position, ...size }
         const at = (dx, dy) =>
@@ -172,19 +178,39 @@ const Window = ({ id, children }) => {
             ref={nodeRef}
             aria-label={title}
             onPointerDown={() => focusWindow(id)}
-            style={{
-                left: position.x,
-                top: position.y,
-                width: size.width,
-                height: size.height,
-                zIndex,
-            }}
+            style={
+                isMobile
+                    ? { left: 0, top: 44, right: 0, bottom: 0, zIndex }
+                    : {
+                          left: position.x,
+                          top: position.y,
+                          width: size.width,
+                          height: size.height,
+                          zIndex,
+                      }
+            }
             className="fixed"
         >
             {/* The clipping lives on this inner panel, not the section, so the
                 resize handles below stay outside it and keep their hit area. */}
             <div className="window-panel flex h-full flex-col overflow-hidden rounded-xl">
-            {/* Title bar */}
+            {isMobile ? (
+                <header className="relative flex h-12 shrink-0 items-center border-b border-white/10 px-3">
+                    <button
+                        type="button"
+                        onClick={() => (nav?.onBack ? nav.onBack() : closeWindow(id))}
+                        className="relative z-10 -ml-1 flex items-center gap-0.5 text-[15px] text-blue-400"
+                    >
+                        <ChevronLeft className="size-5" />
+                        Go Back
+                    </button>
+
+                    <span className="pointer-events-none absolute inset-x-0 text-center font-inter text-[15px] font-semibold text-white">
+                        {nav?.title ?? title}
+                    </span>
+                </header>
+            ) : (
+            /* Title bar */
             <header
                 onPointerDown={handleTitleBarDown}
                 onDoubleClick={() => toggleMaximize(id)}
@@ -220,13 +246,16 @@ const Window = ({ id, children }) => {
                     {title}
                 </span>
             </header>
+            )}
 
             <div className="min-h-0 flex-1 overflow-auto text-white/90">
-                {children}
+                <WindowNavContext.Provider value={setNav}>
+                    {children}
+                </WindowNavContext.Provider>
             </div>
             </div>
 
-            {resizable && !isMaximized && RESIZE_HANDLES.map(({ dir, className }) => (
+            {!isMobile && resizable && !isMaximized && RESIZE_HANDLES.map(({ dir, className }) => (
                 <span
                     key={dir}
                     onPointerDown={handleResizeDown(dir)}

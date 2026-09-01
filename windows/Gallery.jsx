@@ -36,7 +36,7 @@ const Gallery = () => {
 
     return (
         <div className="relative flex h-full font-inter">
-            <aside className="w-44 shrink-0 overflow-auto border-r border-white/10 bg-black/25 px-2 py-3">
+            <aside className="w-32 shrink-0 overflow-auto border-r border-white/10 bg-black/25 px-2 py-3 sm:w-44">
                 <p className="px-2 pb-1 text-[11px] font-medium text-white/35">Photos</p>
                 <ul className="space-y-0.5">
                     {SECTIONS.map(({ id, label, icon: Icon }) => (
@@ -65,7 +65,7 @@ const Gallery = () => {
                         <p className="text-sm text-white/40">{EMPTY_MESSAGE[section]}</p>
                         {section === 'library' && (
                             <p className="max-w-xs text-xs leading-relaxed text-white/25">
-                                Drop images in /public and add them to gallery.js.
+                                Photos will show up here.
                             </p>
                         )}
                     </div>

@@ -46,7 +46,10 @@ const Resume = () => {
                 <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-white/50">
                     {location && <span>{location}</span>}
                     {resume.phone && (
-                        <a href={`tel:${resume.phone}`} className="hover:text-white/80">
+                        <a
+                            href={`tel:${resume.phone.replace(/[^\d+]/g, '')}`}
+                            className="hover:text-white/80"
+                        >
                             {resume.phone}
                         </a>
                     )}

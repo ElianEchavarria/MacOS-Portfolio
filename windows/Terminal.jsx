@@ -21,6 +21,9 @@ const BIO = [
 const OPEN_ALIASES = {
     resume: 'resume',
     contact: 'contact',
+    about: 'about',
+    'about-me': 'about',
+    'about-me.txt': 'about',
     portfolio: 'finder',
     finder: 'finder',
     articles: 'safari',
@@ -36,6 +39,7 @@ const OPEN_ALIASES = {
 // things they then have to guess at.
 const ROOT_LISTING = [
     { name: 'projects/', hint: 'ls projects/' },
+    { name: 'about-me.txt', hint: 'open about' },
     { name: 'resume', hint: 'open resume' },
     { name: 'contact', hint: 'open contact' },
 ]

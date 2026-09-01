@@ -66,8 +66,8 @@ const APP_WINDOWS = {
     contact: {
         // A fixed-size panel, like Contacts' own compact window.
         title: 'Contact',
-        size: { width: 560, height: 660 },
-        minSize: { width: 560, height: 660 },
+        size: { width: 560, height: 675 },
+        minSize: { width: 560, height: 675 },
         resizable: false,
     },
     trash: {

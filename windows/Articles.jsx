@@ -52,9 +52,9 @@ const Articles = () => (
         {articles.length === 0 ? (
             <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 px-8 text-center">
                 <Newspaper className="size-8 text-white/20" />
-                <p className="text-sm text-white/40">No articles yet</p>
+                <p className="text-sm text-white/40">Nothing published yet</p>
                 <p className="max-w-xs text-xs leading-relaxed text-white/25">
-                    Add entries to articles.js and they will show up here.
+                    Writing goes here when there is some. Check back.
                 </p>
             </div>
         ) : (

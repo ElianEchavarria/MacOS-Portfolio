@@ -15,11 +15,9 @@ const resume = {
 
     // Your phone number is on the PDF but deliberately not here: a website is
     // scraped far more aggressively than a resume you hand to a recruiter.
-    phone: null,
+    phone: '(929) 303-8649',
 
-    // Set to e.g. '/ElianEchavarriaAvila_Resume.pdf' after copying the file
-    // into /public. Note the PDF still contains your phone number.
-    pdfUrl: null,
+    pdfUrl: '/Elian_Echavarria_Resume.pdf',
 
     links: [
         { label: 'GitHub', href: 'https://github.com/ElianEchavarria' },
@@ -28,7 +26,8 @@ const resume = {
 
     // The resume has no summary section. Write one in your own voice, or
     // leave it null and the About section won't render.
-    summary: null,
+    summary:
+        'Full-stack developer studying Computer Science at Lehman College. I work mostly in JavaScript, React, Next.js, Express and PostgreSQL, and I have shipped a 1v1 real-time competitive coding platform solo as well as production web apps as an intern. Big on clean UI, good UX, and code that does not take a team to debug.',
 
     experience: [
         {
@@ -84,7 +83,7 @@ const resume = {
     ],
 
     leadership: [
-        'Computer Science Club, ColorStack Chapter — Technical Team Member (Oct 2025 – Present). Lead LeetCode and DSA workshops, mentor peers in problem-solving and interview prep.',
+        'Computer Science Club, ColorStack Chapter — Technical Team Member (Oct 2025 – Dec 2025). Lead LeetCode and DSA workshops, mentor peers in problem-solving and interview prep.',
         'Open-Source Contributor — Hacktoberfest 2025.',
     ],
 
