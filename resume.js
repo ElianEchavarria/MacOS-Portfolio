@@ -27,7 +27,7 @@ const resume = {
     // The resume has no summary section. Write one in your own voice, or
     // leave it null and the About section won't render.
     summary:
-        'Full-stack developer studying Computer Science at Lehman College. I work mostly in JavaScript, React, Next.js, Express and PostgreSQL, and I have shipped a 1v1 real-time competitive coding platform solo as well as production web apps as an intern. Big on clean UI, good UX, and code that does not take a team to debug.',
+        'Full-stack developer studying Computer Science at Lehman College. I work mostly in JavaScript, TypeScript, React, Next.js, Express and PostgreSQL — I shipped a 1v1 real-time competitive coding platform solo, and at Cambio Labs I built a 23-step interactive onboarding tour spanning 10+ admin pages, spotlight overlay written from scratch. Big on clean UI, good UX, and code that does not take a team to debug.',
 
     experience: [
         {
@@ -36,12 +36,11 @@ const resume = {
             location: 'New York, NY',
             period: 'June 2026 – Aug 2026',
             points: [
-                'Architected v3 of the LabelZ platform using TypeScript, Python, Vite, Claude, IBM Bob, and VS Code, with Base44 for user profile management — taking the company from idea to MVP and giving ServiceNetZero an actual product to sell rather than a consulting pitch.',
-                'Reworked the company landing page applying SEO and AIO/GEO (LLM visibility) principles and the schema behind how websites are built, producing an immediate 22% improvement in visibility to LLMs and a noticeable spike in SEO performance in Google Analytics.',
+                'Architected v3 of the LabelZ platform using TypeScript, Python, Vite, Claude, and IBM Bob, with Base44 for user profile management — taking the company from idea to MVP and giving ServiceNetZero an actual product to sell.',
+                'Reworked the company landing page applying SEO and AIO/GEO (LLM visibility) principles and website schema, producing an immediate 22% improvement in visibility to LLMs and a spike in SEO performance in Google Analytics.',
                 'Built a market intelligence dashboard that improved business research efficiency by over 60%, visualizing quantitative and qualitative data side by side from non-LLM sourced data.',
-                'Sourced, assisted in the application for, and participated in the NSF I-Corps regional bootcamp — securing $3,000 in immediate funding for customer discovery, conducting academic research under NSF supervision, and overseeing interview logging and data management for the bootcamp.',
-                'Applied Agile project management: ran daily standup meetings and maintained project databases and tables in Notion to track progress and triage next steps.',
-                'Used active listening to ingest high-level concepts from non-technical stakeholders, bridging the gap between abstract business ideas and concrete technical execution while managing scope and budget.',
+                'Sourced, applied to, and participated in the NSF I-Corps regional bootcamp, securing $3,000 in funding for customer discovery and conducting academic research under NSF supervision.',
+                'Ran daily Agile standups and maintained project databases in Notion; used active listening to translate high-level concepts from non-technical stakeholders into concrete technical execution while managing scope and budget.',
             ],
         },
         {
@@ -50,8 +49,10 @@ const resume = {
             location: 'Remote',
             period: 'Feb 2026 – May 2026',
             points: [
-                'Built and improved full-stack web applications using React, Next.js, Node.js, and PostgreSQL.',
-                'Applied data structures, algorithms, and software engineering fundamentals to develop scalable features and internal tools; collaborated cross-functionally on product development and technical strategy.',
+                'Designed and built a 23-step interactive onboarding tour in React/TypeScript guiding new instructors through the full course lifecycle — from creating a course to publishing it — across 10+ admin pages.',
+                'Built a custom spotlight and tooltip overlay from scratch instead of using a third-party library, supporting async-loaded elements, viewport-aware placement, and a draggable tooltip card.',
+                'Centralized tour state in a single React Context shared across nested routes, tracking progress and user-created IDs so Skip, Back, and Resume route users to the correct page.',
+                'Made steps action-driven — the tour advances only when users complete the real task (creating a course, adding a checkpoint, uploading media), teaching the product through actual use.',
             ],
         },
         {

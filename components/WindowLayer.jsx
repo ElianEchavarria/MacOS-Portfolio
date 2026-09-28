@@ -45,17 +45,21 @@ const ProjectBody = ({ project }) => (
 
         <p className="mt-1 text-sm text-white/60">{project.tagline}</p>
 
-        {project.url && (
-            <a
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-block text-xs text-white/70 underline underline-offset-4 hover:text-white"
-            >
-                {project.url.replace(/^https?:\/\//, '')}
-            </a>
+        {project.links?.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                {project.links.map((link) => (
+                    <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-xs text-white/70 underline underline-offset-4 hover:text-white"
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </div>
         )}
-
         <ul className="mt-4 flex flex-wrap gap-1.5">
             {project.stack.map((tech, i) => (
                 <li

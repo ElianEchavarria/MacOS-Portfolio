@@ -30,7 +30,7 @@ const EXTRA_WINDOWS = {
     },
 }
 
-// Every project gets a window, keyed by its id, so `open algoarena` works.
+// Every project gets a window, keyed by its id, so `open algostrike` works.
 const PROJECT_WINDOWS = Object.fromEntries(
     projects.map((project) => [
         project.id,
