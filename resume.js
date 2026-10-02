@@ -39,8 +39,7 @@ const resume = {
                 'Architected v3 of the LabelZ platform using TypeScript, Python, Vite, Claude, and IBM Bob, with Base44 for user profile management — taking the company from idea to MVP and giving ServiceNetZero an actual product to sell.',
                 'Reworked the company landing page applying SEO and AIO/GEO (LLM visibility) principles and website schema, producing an immediate 22% improvement in visibility to LLMs and a spike in SEO performance in Google Analytics.',
                 'Built a market intelligence dashboard that improved business research efficiency by over 60%, visualizing quantitative and qualitative data side by side from non-LLM sourced data.',
-                'Sourced, applied to, and participated in the NSF I-Corps regional bootcamp, securing $3,000 in funding for customer discovery and conducting academic research under NSF supervision.',
-                'Ran daily Agile standups and maintained project databases in Notion; used active listening to translate high-level concepts from non-technical stakeholders into concrete technical execution while managing scope and budget.',
+                'Sourced and participated in the NSF I-Corps regional bootcamp, securing $3,000 in funding for customer discovery; ran daily Agile standups and translated high-level concepts from non-technical stakeholders into concrete technical execution.',
             ],
         },
         {
@@ -52,7 +51,7 @@ const resume = {
                 'Designed and built a 23-step interactive onboarding tour in React/TypeScript guiding new instructors through the full course lifecycle — from creating a course to publishing it — across 10+ admin pages.',
                 'Built a custom spotlight and tooltip overlay from scratch instead of using a third-party library, supporting async-loaded elements, viewport-aware placement, and a draggable tooltip card.',
                 'Centralized tour state in a single React Context shared across nested routes, tracking progress and user-created IDs so Skip, Back, and Resume route users to the correct page.',
-                'Made steps action-driven — the tour advances only when users complete the real task (creating a course, adding a checkpoint, uploading media), teaching the product through actual use.',
+                'Made steps action-driven — the tour advances only when users complete the real task (creating a course, adding a checkpoint, uploading media), teaching the product through use.',
             ],
         },
         {
@@ -61,8 +60,7 @@ const resume = {
             location: 'Manhattan, NY',
             period: 'June 2025 – Aug 2025',
             points: [
-                'Built Poll Maker on a team of four (JavaScript, React, Node.js, Express, SQL), a full-stack app for creating interactive polls and tracking progress.',
-                'Developed an AI study assistant that helps students generate dynamic quizzes, track study habits, and determine class grades.',
+                'Built two full-stack applications on teams of four (JavaScript, React, Node.js, Express, SQL): Poll Maker, for creating interactive polls and tracking progress, and an AI study assistant that generates dynamic quizzes, tracks study habits, and determines class grades.',
             ],
         },
     ],
@@ -89,7 +87,7 @@ const resume = {
     ],
 
     skills: {
-        Languages: ['JavaScript', 'TypeScript', 'Python', 'HTML', 'CSS', 'SQL'],
+        Languages: ['JavaScript', 'TypeScript', 'Python', 'SQL', 'HTML', 'CSS'],
         'Frameworks & Libraries': [
             'React',
             'Next.js',
@@ -98,16 +96,22 @@ const resume = {
             'TailwindCSS',
             'Socket.IO',
             'Vite',
+            'asyncio',
+            'discord.py',
+            'pytest',
         ],
-        Databases: ['PostgreSQL', 'Sequelize (ORM)', 'Backend Schema Data Tables'],
-        'Infrastructure & Deployment': [
+        'Databases & Data': [
+            'PostgreSQL',
+            'SQLite',
+            'Sequelize (ORM)',
+            'Schema design',
+            'Data visualization',
+        ],
+        'Infrastructure & Tools': [
             'Docker',
             'nginx (reverse proxy, TLS)',
             'pm2',
             'Vercel',
-            'GitHub Pages',
-        ],
-        Tools: [
             'Git',
             'GitHub',
             'VS Code',
@@ -117,19 +121,17 @@ const resume = {
             'Base44',
             'Postman',
             'Figma',
-            'Chrome DevTools',
             'Bash',
             'npm',
         ],
-        'Techniques & Concepts': [
+        Concepts: [
             'REST APIs',
             'Agile',
             'SEO/AIO/GEO',
-            'Data Visualization',
             'HTTP',
             'OAuth 2.0',
-            'OpenAPI Specification',
-            'Responsive Design',
+            'OpenAPI',
+            'Responsive design',
         ],
         'Spoken Languages': ['English (Fluent)', 'Spanish (Fluent)'],
     },

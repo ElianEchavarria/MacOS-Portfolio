@@ -24,6 +24,25 @@ const projects = [
         ],
     },
     {
+        id: 'discord-stock-game',
+        name: 'Discord Stock Trading Game',
+        tagline: 'A Discord bot that runs a paper-trading game on live market data.',
+        year: '2026',
+        links: [
+            {
+                label: 'GitHub repo',
+                url: 'https://github.com/ElianEchavarria/Discord-Stock-Market-Game',
+            },
+        ],
+        stack: ['Python', 'asyncio', 'SQLite', 'yfinance', 'pytest'],
+        points: [
+            'Built an async Discord bot (discord.py 2.x) running a paper-trading game on live market data, with persistent portfolios over a normalized SQLite schema (users, holdings, trade ledger), P&L tracking, and a scheduled weekly leaderboard.',
+            'Implemented weighted-average cost-basis accounting to compute realized and unrealized P&L across partial buys and sells.',
+            'Cut multi-symbol quote latency ~5x by replacing sequential awaits with asyncio.gather and adding a 60s TTL cache collapsing repeated ticker lookups into one API call; kept all I/O off the event loop via asyncio.to_thread and aiosqlite.',
+            'Wrote 27 pytest tests with mocked market data and temp databases, then validated coverage by mutation testing — which exposed an average-cost test that passed against deliberately broken math.',
+        ],
+    },
+    {
         id: 'lockin',
         name: 'LockIn',
         tagline: 'A full-stack student platform with an AI study chat.',
