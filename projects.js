@@ -24,6 +24,24 @@ const projects = [
         ],
     },
     {
+        id: 'lyriq',
+        name: 'Lyriq',
+        tagline: 'Real-time synced lyrics for Spotify.',
+        year: '2026',
+        links: [
+            { label: 'Live site', url: 'https://lyric-plum.vercel.app' },
+            { label: 'GitHub repo', url: 'https://github.com/ElianEchavarria/lyric' },
+        ],
+        stack: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Prisma', 'Auth.js', 'Vercel'],
+        points: [
+            'Built and deployed a full-stack Next.js/TypeScript web app that mirrors a user’s live Spotify playback and renders word-by-word karaoke lyrics, hosted on Vercel with a Neon PostgreSQL database.',
+            'Engineered a fault-tolerant lyrics pipeline that falls back across 3 sources (LRCLIB exact match, LRCLIB search, Genius scraping), with per-source timeouts and caching. It parses LRC timestamps and interpolates word timings when a source only provides line timing.',
+            'Designed a client-side playback clock that extrapolates song position between API polls using requestAnimationFrame, with user-tunable latency compensation. Adaptive polling (3s playing, 10s paused, suspended in background tabs) cuts unnecessary API calls.',
+            'Implemented OAuth 2.0 sign-in with Auth.js and automatic token refresh, plus a REST API on Prisma/PostgreSQL for saved lyric “moments” with input validation, cursor-based pagination and per-user data isolation.',
+            'Built in-browser video export that renders karaoke animations on HTML Canvas and records native MP4 with the MediaRecorder API, replacing a planned WebAssembly encoder.',
+        ],
+    },
+    {
         id: 'discord-stock-game',
         name: 'Discord Stock Trading Game',
         tagline: 'A Discord bot that runs a paper-trading game on live market data.',

@@ -32,7 +32,7 @@ const resume = {
     experience: [
         {
             role: 'Business Development Intern',
-            company: 'Blackstone Launchpad | ServiceNetZero',
+            company: 'Blackstone LaunchPad | ServiceNetZero',
             location: 'New York, NY',
             period: 'June 2026 – Aug 2026',
             points: [
@@ -56,8 +56,8 @@ const resume = {
         },
         {
             role: 'Software Engineering Trainee',
-            company: 'NYC Tech Talent Pipeline Program',
-            location: 'Manhattan, NY',
+            company: 'NYC Tech Talent Pipeline',
+            location: 'New York, NY',
             period: 'June 2025 – Aug 2025',
             points: [
                 'Built two full-stack applications on teams of four (JavaScript, React, Node.js, Express, SQL): Poll Maker, for creating interactive polls and tracking progress, and an AI study assistant that generates dynamic quizzes, tracks study habits, and determines class grades.',
@@ -68,21 +68,21 @@ const resume = {
     education: [
         {
             school: 'Lehman College, CUNY',
-            credential: 'B.S. Computer Science (Transfer)',
+            credential: 'B.S. Computer Science',
             location: 'Bronx, NY',
-            period: 'Jan 2026 – Dec 2027',
+            period: 'Jan 2026 – Expected Dec 2027',
         },
         {
             school: 'Borough of Manhattan Community College, CUNY',
             credential: 'A.S. Computer Science',
-            location: 'Manhattan, NY',
+            location: 'New York, NY',
             period: 'Sept 2022 – Dec 2025',
             note: 'Relevant coursework: Data Structures, Analysis of Algorithms',
         },
     ],
 
     leadership: [
-        'Computer Science Club, ColorStack Chapter — Technical Team Member (Oct 2025 – Dec 2025). Lead LeetCode and DSA workshops, mentor peers in problem-solving and interview prep.',
+        'ColorStack Chapter, Computer Science Club — Technical Team Member (Oct 2025 – Dec 2025). Led LeetCode/DSA workshops and mentored peers in interview prep.',
         'Open-Source Contributor — Hacktoberfest 2025.',
     ],
 
@@ -93,14 +93,15 @@ const resume = {
             'Next.js',
             'Node.js',
             'Express',
-            'TailwindCSS',
+            'Prisma',
+            'Auth.js',
             'Socket.IO',
+            'Tailwind CSS',
             'Vite',
-            'asyncio',
             'discord.py',
             'pytest',
         ],
-        'Databases & Data': [
+        Databases: [
             'PostgreSQL',
             'SQLite',
             'Sequelize (ORM)',
@@ -114,23 +115,20 @@ const resume = {
             'Vercel',
             'Git',
             'GitHub',
-            'VS Code',
-            'Notion',
-            'Claude',
-            'IBM Bob',
-            'Base44',
-            'Postman',
-            'Figma',
             'Bash',
             'npm',
+            'Postman',
+            'Figma',
+            'Claude',
         ],
         Concepts: [
             'REST APIs',
+            'OAuth 2.0',
+            'WebSockets',
+            'OpenAPI',
+            'HTTP',
             'Agile',
             'SEO/AIO/GEO',
-            'HTTP',
-            'OAuth 2.0',
-            'OpenAPI',
             'Responsive design',
         ],
         'Spoken Languages': ['English (Fluent)', 'Spanish (Fluent)'],
