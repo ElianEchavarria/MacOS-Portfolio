@@ -7,9 +7,7 @@
  */
 const resume = {
     name: 'Elian Echavarria Avila',
-    // Not on the resume — it has no headline. Change this to whatever you want
-    // to lead with.
-    title: 'Software Engineer',
+    title: null,
     location: 'New York, NY',
     email: 'eechavarria.2022@gmail.com',
 
@@ -24,10 +22,7 @@ const resume = {
         { label: 'LinkedIn', href: 'https://linkedin.com/in/ElianEchavarria' },
     ],
 
-    // The resume has no summary section. Write one in your own voice, or
-    // leave it null and the About section won't render.
-    summary:
-        'Full-stack developer studying Computer Science at Lehman College. I work mostly in JavaScript, TypeScript, React, Next.js, Express and PostgreSQL — I shipped a 1v1 real-time competitive coding platform solo, and at Cambio Labs I built a 23-step interactive onboarding tour spanning 10+ admin pages, spotlight overlay written from scratch. Big on clean UI, good UX, and code that does not take a team to debug.',
+    summary: null,
 
     experience: [
         {
@@ -36,22 +31,22 @@ const resume = {
             location: 'New York, NY',
             period: 'June 2026 – Aug 2026',
             points: [
-                'Architected v3 of the LabelZ platform using TypeScript, Python, Vite, Claude, and IBM Bob, with Base44 for user profile management — taking the company from idea to MVP and giving ServiceNetZero an actual product to sell.',
-                'Reworked the company landing page applying SEO and AIO/GEO (LLM visibility) principles and website schema, producing an immediate 22% improvement in visibility to LLMs and a spike in SEO performance in Google Analytics.',
-                'Built a market intelligence dashboard that improved business research efficiency by over 60%, visualizing quantitative and qualitative data side by side from non-LLM sourced data.',
-                'Sourced and participated in the NSF I-Corps regional bootcamp, securing $3,000 in funding for customer discovery; ran daily Agile standups and translated high-level concepts from non-technical stakeholders into concrete technical execution.',
+                'Architected v3 of the LabelZ platform in TypeScript, Python, and Vite (AI-assisted with Claude and IBM Bob, Base44 for user profiles), taking the company from idea to MVP and giving ServiceNetZero its first sellable product.',
+                'Rebuilt the company landing page with SEO, AIO/GEO (LLM visibility), and structured-data schema, driving an immediate 22% increase in LLM visibility and a spike in Google Analytics search performance.',
+                'Built a dashboard visualizing quantitative and qualitative non-LLM market data, improving research efficiency by over 60%.',
+                'Sourced and completed the NSF I-Corps regional bootcamp, securing $3,000 in customer-discovery funding; ran daily Agile standups and translated non-technical stakeholder goals into technical execution.',
             ],
         },
         {
-            role: 'Software Engineer Intern',
+            role: 'Full-Stack Engineer Intern',
             company: 'Cambio Labs',
             location: 'Remote',
             period: 'Feb 2026 – May 2026',
             points: [
-                'Designed and built a 23-step interactive onboarding tour in React/TypeScript guiding new instructors through the full course lifecycle — from creating a course to publishing it — across 10+ admin pages.',
-                'Built a custom spotlight and tooltip overlay from scratch instead of using a third-party library, supporting async-loaded elements, viewport-aware placement, and a draggable tooltip card.',
-                'Centralized tour state in a single React Context shared across nested routes, tracking progress and user-created IDs so Skip, Back, and Resume route users to the correct page.',
-                'Made steps action-driven — the tour advances only when users complete the real task (creating a course, adding a checkpoint, uploading media), teaching the product through use.',
+                'Built a 23-step React/TypeScript onboarding tour taking instructors from course creation to publishing on 10+ admin pages.',
+                'Built a custom spotlight/tooltip overlay from scratch with async-element support, viewport-aware placement, and dragging.',
+                'Centralized tour state in a React Context across nested routes, tracking progress and IDs so Skip/Back/Resume route correctly.',
+                'Made steps action-driven, advancing only when users complete the real task (e.g., creating a course or uploading media).',
             ],
         },
         {
@@ -60,7 +55,7 @@ const resume = {
             location: 'New York, NY',
             period: 'June 2025 – Aug 2025',
             points: [
-                'Built two full-stack applications on teams of four (JavaScript, React, Node.js, Express, SQL): Poll Maker, for creating interactive polls and tracking progress, and an AI study assistant that generates dynamic quizzes, tracks study habits, and determines class grades.',
+                'Built two full-stack apps on four-person teams (JavaScript, React, Node.js, Express, SQL): Poll Maker for creating and tracking interactive polls, and an AI study assistant that generates quizzes, tracks study habits, and calculates grades.',
             ],
         },
     ],
@@ -72,18 +67,10 @@ const resume = {
             location: 'Bronx, NY',
             period: 'Jan 2026 – Expected Dec 2027',
         },
-        {
-            school: 'Borough of Manhattan Community College, CUNY',
-            credential: 'A.S. Computer Science',
-            location: 'New York, NY',
-            period: 'Sept 2022 – Dec 2025',
-            note: 'Relevant coursework: Data Structures, Analysis of Algorithms',
-        },
     ],
 
     leadership: [
-        'ColorStack Chapter, Computer Science Club — Technical Team Member (Oct 2025 – Dec 2025). Led LeetCode/DSA workshops and mentored peers in interview prep.',
-        'Open-Source Contributor — Hacktoberfest 2025.',
+        'ColorStack Chapter, Computer Science Club — Technical Team Member (Oct 2025 – Dec 2025). Led LeetCode/DSA workshops and mentored peers in interview prep; open-source contributor in Hacktoberfest 2025.',
     ],
 
     skills: {

@@ -29,7 +29,7 @@ const Resume = () => {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
                         <h2 className="text-2xl font-semibold text-white">{name}</h2>
-                        <p className="mt-1 text-sm text-white/60">{title}</p>
+                        {title && <p className="mt-1 text-sm text-white/60">{title}</p>}
                     </div>
 
                     {pdfUrl && (
